@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:my_journal/Views/onboarding_view.dart';
-import 'package:my_journal/Views/routes.dart';
+import 'package:my_journal/routes.dart';
 
 import 'Controllers/user_controller.dart';
 
@@ -36,15 +36,15 @@ class AppLaunchView extends HookConsumerWidget {
     final user = ref.watch(userState);
 
     if (user != null) {
-      return const TabBarView();
+      return const MainTabBarView();
     } else {
       return const OnboardView();
     }
   }
 }
 
-class TabBarView extends HookConsumerWidget {
-  const TabBarView({Key? key}) : super(key: key);
+class MainTabBarView extends HookConsumerWidget {
+  const MainTabBarView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container();
