@@ -46,9 +46,7 @@ class UserController {
 extension MockUserDate on UserController {
   Future<void> createNewUserWithMock() async {
     final mockUser = UsersCompanion(
-      name: const Value("DevonMock"),
-      dateCreated: Value(DateTime.now())
-    );
+        name: const Value("DevonMock"), dateCreated: Value(DateTime.now()));
 
     _read(userState.notifier).state =
         await _read(userRepository).createNewUser(mockUser);
