@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:my_journal/Views/onboarding_view.dart';
 import 'package:my_journal/routes.dart';
 
-import 'Controllers/user_controller.dart';
+import 'Repository/user_repo.dart';
 
 void main() {
   runApp(const ProviderScope(
@@ -33,9 +34,14 @@ class AppLaunchView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(userState);
+    useEffect(() {
+      final _ = UserRepoImp(ref.read);
+      return null;
+    });
 
-    if (user != null) {
+    final userLoggedIn = ref.read(loggedIn);
+
+    if (userLoggedIn) {
       return const MainTabBarView();
     } else {
       return const OnboardView();

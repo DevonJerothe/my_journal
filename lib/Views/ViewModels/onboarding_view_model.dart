@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:my_journal/Repository/user_repo.dart';
 
 import '../../Models/models.dart';
 import '../onboarding_view.dart';
@@ -36,8 +37,9 @@ class OnboardingViewModel {
   void nextStep(BuildContext context) {
     final currStep = _read(newUserStepIndexState.notifier);
     if (currStep.state >= steps.length - 1) {
+      _read(userState.notifier).state = newUser;
       context.goNamed('tabBarView');
-    }else{
+    } else {
       currStep.state++;
     }
   }
