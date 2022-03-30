@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:my_journal/Repository/user_repo.dart';
+import '../../Repository/user_repo.dart';
 
 import '../../Models/models.dart';
 import '../onboarding_view.dart';
