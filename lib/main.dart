@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:my_journal/Views/onboarding_view.dart';
-import 'package:my_journal/routes.dart';
+import 'Views/home_tab_view.dart';
+import 'Views/onboarding_view.dart';
+import 'routes.dart';
 
 import 'Repository/user_repo.dart';
 
@@ -46,13 +47,5 @@ class AppLaunchView extends HookConsumerWidget {
     } else {
       return const OnboardView();
     }
-  }
-}
-
-class MainTabBarView extends HookConsumerWidget {
-  const MainTabBarView({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Container();
   }
 }
