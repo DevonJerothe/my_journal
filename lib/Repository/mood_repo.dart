@@ -1,5 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:my_journal/DB/database.dart';
+import '../DB/database.dart';
 import '../Models/models.dart';
 
 final moodsState = StateProvider<List<MoodModel>?>((ref) => null);

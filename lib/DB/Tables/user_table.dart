@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart';
-import 'package:my_journal/Models/models.dart';
+import '../../Models/models.dart';
 
 @UseRowClass(UserModel)
 class Users extends Table {

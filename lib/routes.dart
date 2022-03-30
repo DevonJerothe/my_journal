@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_journal/Views/onboarding_view.dart';
-import 'package:my_journal/main.dart';
+import 'Views/home_tab_view.dart';
+import 'Views/onboarding_view.dart';
+import 'main.dart';
 
 class AppRouter {
   static final getRoutes = GoRouter(routes: [
