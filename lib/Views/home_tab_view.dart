@@ -34,11 +34,24 @@ class MainTabBarView extends HookConsumerWidget {
         currentIndex: index.value,
         onTap: (val) => index.value = val,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Fontisto.neutral), label: 'Moods'),
           BottomNavigationBarItem(
-              icon: Icon(Fontisto.history), label: 'Habits'),
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 8.0, top: 2),
+                child: Icon(Fontisto.neutral),
+              ),
+              label: 'Moods'),
           BottomNavigationBarItem(
-              icon: Icon(Fontisto.nav_icon_list_a), label: 'Routines')
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 8.0, top: 2),
+                child: Icon(Fontisto.history),
+              ),
+              label: 'Habits'),
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 8.0, top: 2),
+                child: Icon(Fontisto.nav_icon_list_a),
+              ),
+              label: 'Routines')
         ],
       ),
     );
