@@ -15,7 +15,7 @@ final loggedIn = StateProvider<bool>((ref) {
 final userState = StateProvider<UserModel?>((ref) => null);
 final userErrorState = StateProvider<String?>((ref) => null);
 
-final userRepository = Provider.autoDispose((ref) => UserRepoImp(ref.read));
+final userRepository = Provider((ref) => UserRepoImp(ref.read));
 
 abstract class UserRepo {
   Future<void> getCurrentUser();
@@ -25,8 +25,8 @@ abstract class UserRepo {
 
 class UserRepoImp implements UserRepo {
   final Reader _read;
-  UserRepoImp(this._read, {bool mockDB = false}) {
-    _db = mockDB ? AppDB(NativeDatabase.memory()) : AppDB.getInstance();
+  UserRepoImp(this._read, {AppDB? mockDB}) {
+    _db = mockDB ?? AppDB.getInstance();
     initState();
   }
 

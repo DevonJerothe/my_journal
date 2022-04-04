@@ -10,8 +10,8 @@ import '../Models/models.dart';
 
 part 'database.g.dart';
 
-LazyDatabase _openConnection({bool mockDB = false}) => LazyDatabase(() async {
-      final fileName = mockDB ? 'mockDB.sqlite' : 'db.sqlite';
+LazyDatabase _openConnection() => LazyDatabase(() async {
+      const fileName = 'db.sqlite';
       final dbFolder = await getApplicationDocumentsDirectory();
       final file = File(p.join(dbFolder.path, fileName));
       return NativeDatabase(file, logStatements: true);
