@@ -33,6 +33,7 @@ void main() {
       test(
         'Test checkLoggedIn',
         () async {
+          container.read(userState.notifier).state = null;
           expect(container.read(loggedIn), false);
 
           var userMock = UserModel.createModelMock();
