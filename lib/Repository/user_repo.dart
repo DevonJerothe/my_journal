@@ -1,4 +1,4 @@
-import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../DB/database.dart';
@@ -15,8 +15,7 @@ final loggedIn = StateProvider<bool>((ref) {
 final userState = StateProvider<UserModel?>((ref) => null);
 final userErrorState = StateProvider<String?>((ref) => null);
 
-final userRepository =
-    Provider.autoDispose<UserRepo>((ref) => UserRepoImp(ref.read));
+final userRepository = Provider((ref) => UserRepoImp(ref.read));
 
 abstract class UserRepo {
   Future<void> getCurrentUser();
@@ -26,20 +25,19 @@ abstract class UserRepo {
 
 class UserRepoImp implements UserRepo {
   final Reader _read;
-  UserRepoImp(this._read) {
-    _db = AppDB.getInstance();
+  UserRepoImp(this._read, {AppDB? mockDB}) {
+    _db = mockDB ?? AppDB.getInstance();
     initState();
   }
 
   late AppDB _db;
 
   void initState() {
-   getCurrentUser();
-    //checkLoggedIn();
+    getCurrentUser();
   }
 
   void dispose() {
-    //TODO: dispose
+    _db.close();
   }
 
   Future<void> checkLoggedIn() async {
@@ -70,14 +68,5 @@ class UserRepoImp implements UserRepo {
     if (!update) {
       _read(userErrorState.notifier).state = "User Failed To Update";
     }
-  }
-}
-
-extension MockUserData on UserRepoImp {
-  Future<void> createNewUserWithMock() async {
-    final mockUser = UsersCompanion(
-        name: const Value("DevonMock"), dateCreated: Value(DateTime.now()));
-
-    createNewUser(mockUser);
   }
 }

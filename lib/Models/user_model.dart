@@ -49,6 +49,13 @@ class UserModel implements Insertable<UserModel> {
   factory UserModel.fromJson(String source) =>
       UserModel.fromMap(json.decode(source));
 
+  factory UserModel.createModelMock() => UserModel(
+        userId: 123,
+        name: 'MrMock',
+        onBoardingFinished: true,
+        dateCreated: DateTime.now(),
+      );
+
   @override
   String toString() {
     return 'UserModel(userId: $userId, name: $name, onBoardingFinished: $onBoardingFinished, dateCreated: $dateCreated)';

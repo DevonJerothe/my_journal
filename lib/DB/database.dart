@@ -11,8 +11,9 @@ import '../Models/models.dart';
 part 'database.g.dart';
 
 LazyDatabase _openConnection() => LazyDatabase(() async {
+      const fileName = 'db.sqlite';
       final dbFolder = await getApplicationDocumentsDirectory();
-      final file = File(p.join(dbFolder.path, 'db.sqlite'));
+      final file = File(p.join(dbFolder.path, fileName));
       return NativeDatabase(file, logStatements: true);
     });
 
@@ -21,11 +22,11 @@ class AppDB extends _$AppDB {
   static AppDB? _instance;
 
   static AppDB getInstance() {
-    _instance ??= AppDB();
+    _instance ??= AppDB(_openConnection());
     return _instance!;
   }
 
-  AppDB() : super(_openConnection());
+  AppDB(QueryExecutor e) : super(_openConnection());
 
   @override
   int get schemaVersion => 1;
