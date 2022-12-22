@@ -1,13 +1,11 @@
 import 'package:drift/drift.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mockito/mockito.dart';
 import 'package:my_journal/DB/database.dart';
 import 'package:my_journal/Mocks/db_mocks.dart';
 import 'package:my_journal/Models/models.dart';
 import 'package:my_journal/Repository/user_repo.dart';
 
-///TODO: Mock the DB with Mockito
 void main() {
   late ProviderContainer container;
   late UserRepoImp sut;
@@ -21,11 +19,6 @@ void main() {
     ]);
     sut = container.read(userRepository);
   });
-
-  // tearDown(() async {
-  //   container.dispose();
-  //   sut.dispose();
-  // });
 
   group(
     'Repo Test',
