@@ -1,4 +1,3 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/mockito.dart';
 import 'package:my_journal/DB/Accessors/daos.dart';
 import 'package:my_journal/Models/models.dart';

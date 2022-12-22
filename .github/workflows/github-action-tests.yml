@@ -1,0 +1,30 @@
+name: Run Tests
+
+on: 
+  workflow_dispatch: 
+  pull_request: 
+    branches: [ master ]
+
+env: 
+  flutter_version: '3.3.10'
+
+jobs: 
+  flutter_tests: 
+    name: Run flutter tests and analyze
+    runs-on: ubuntu-latest
+
+    steps: 
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v1
+        with: 
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v2
+        with: 
+          flutter-version: ${{ env.flutter_version }}
+          channel: 'stable'
+      - name: run pub get
+        run: flutter pub get
+      - name: flutter analyze
+        run: flutter analyze 
+      - name: run tests
+        run: flutter test
