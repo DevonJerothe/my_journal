@@ -16,6 +16,9 @@ class MoodRepoImp implements MoodRepo {
   final Reader _read;
   MoodRepoImp(this._read) {
     _db = AppDB.getInstance();
+
+    // TODO: remove this placeholder
+    var _ = _read(moodsState);
     initState();
   }
 
@@ -23,6 +26,10 @@ class MoodRepoImp implements MoodRepo {
 
   void initState() {
     getMoods();
+  }
+
+  void dispose() {
+    _db.close();
   }
 
   @override
